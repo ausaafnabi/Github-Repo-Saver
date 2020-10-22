@@ -8,7 +8,7 @@ class GithubRepoSchema(Schema):
     description = fields.Str()
     repo_url = fields.URL()
 
-class kudoSchema(GithubRepoSchema):
+class KudoSchema(GithubRepoSchema):
     user_id = fields.Email(required=True)
 
 

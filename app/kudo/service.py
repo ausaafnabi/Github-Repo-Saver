@@ -22,11 +22,11 @@ class Service(object):
             self.repo_client.create(self.prepareKudo(githubRepo))
             return self.dump(githubRepo.data)
         
-        def update_kudo_for(self,repo_id,githubRepo):
+        def update_kudo_with(self,repo_id,githubRepo):
             records_affected =  self.repo_client.update({'user_id': self.user_id,'repo_id':repo_id}, self.prepareKudo(githubRepo))
             return records_affected>0
         
-        def delete_kudo(self,repo_id):
+        def delete_kudo_for(self,repo_id):
             records_affected = self.repo_client.delete({'user_id': self.user_id,'repo_id': repo_id })
             return rows_affected > 0
 
