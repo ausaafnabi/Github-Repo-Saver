@@ -8,13 +8,13 @@ app = Flask(__name__)
 CORS(app)
 
 @app.route("/kudos",methods=["GET"])
-#@login_required
+@login_required
 def index():
     return json_response(Kudo(g.user).find_all_kudos())
 
 
 @app.route("/kudos",methods=["POST"])
-#@login_required
+@login_required
 def create():
     github_repo = GithubRepoSchema().load(json.loads(request.data))
     if github_repo.errors:
@@ -23,7 +23,7 @@ def create():
         return json_response({'error':'kudo not found'},404)
 
 @app.route("/kudo/<int:repo_id>", methods=["GET"])
-#@login_required
+@login_required
 def show(repo_id):
     kudo = Kudo(g.user).find_kudo(repo_id)
     if kudo:
