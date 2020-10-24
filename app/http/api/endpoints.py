@@ -19,8 +19,9 @@ def create():
     github_repo = GithubRepoSchema().load(json.loads(request.data))
     if github_repo.errors:
         return json_response({'error': github_repo.errors},422)
-    else:
-        return json_response({'error':'kudo not found'},404)
+
+    kudo = Kudo(g.user).create_kudo_for(github_repo)
+    return json_response(kudo)
 
 @app.route("/kudo/<int:repo_id>", methods=["GET"])
 @login_required
