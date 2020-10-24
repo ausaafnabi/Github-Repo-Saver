@@ -13,6 +13,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 const styles = theme => ({
   card: {
     maxWidth: 400,
+    margin: '5px', //10px
   },
   media: {
     height: 0,
@@ -38,7 +39,7 @@ class GithubRepo extends React.Component {
           title={this.props.repo.full_name}
         />
         <CardContent>
-          <Typography component="p" style={{minHeight: '90px', overflow: 'scroll'}}>
+          <Typography component="p" style={{minHeight: '90px', overflow: 'auto'}}>
             {this.props.repo.description}
           </Typography>
         </CardContent>
